@@ -15,7 +15,10 @@ let state;
 //symbol => unique
 //object
 
-/* "typeof" => used to know type of a value */
+/* "typeof" => used to know type of a value. 
+We can write type of in 2 ways*/
+/* console.log (tyoeof variable) => 1st type
+    console.log (tyoeof (variable)) =>  2nd type */
 console.log(typeof "Abhilash"); //[output] => string
 console.log(typeof 18); // [output] => number
 console.log(typeof null); // [output] => object
