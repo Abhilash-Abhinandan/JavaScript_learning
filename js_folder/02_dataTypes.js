@@ -9,7 +9,8 @@ let state;
 // ********** DataTypes **********
 // number => 2 to the power 53
 // bigint 
-// string => true/false
+// string => " "
+// boolean => true/false
 //null => standalone value
 // undefined
 //symbol => unique
