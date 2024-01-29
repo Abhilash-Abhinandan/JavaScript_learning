@@ -28,6 +28,8 @@ console.log(newStringOne.trim()); //[o/p] =>  Abhilash [After trimming the space
 const url = "https://fantastic-system-v665qrwv4vpr3w5qw.github.dev/?autoStart=false";
 console.log(url.replace('v665', 'v2348')); //[o/p] => https://fantastic-system-v2348qrwv4vpr3w5qw.github.dev/?autoStart=false
 
+console.log(url.includes('system')) // [o/p] => true
+// url.includes check wheather the string value is present in url or not.
 
 // I need to do deep research in this and write a article about.
 
