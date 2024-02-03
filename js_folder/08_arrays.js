@@ -1,4 +1,4 @@
-// ******************** Array ********************
+// **************************************** Array ****************************************
 
 /*  
     => The Array, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name.
@@ -16,7 +16,7 @@ const myArr2 = new Array(1, 2, 3, 4); // Another way to declare a array.
 console.log(myArr[1]); // [Output] => 1
 
 
-// ******************** Array Methods ********************
+// **************************************** Array Methods ****************************************
 
 // push();
 myArr.push(6);
@@ -78,3 +78,77 @@ console.log("A", myArr); // [Output] => A [ 0, 4, 5 ] (Main array is altered)
         2. After use of slice() method in array the main array will not 
            be altered while splice() method will alter the main array.
 */
+
+const marvel_heros = ["thor", "Ironman", "spiderman"];
+const dc_heros = ["superman", "flash", "batman"];
+// marvel_heros.push(dc_heros);
+// console.log(marvel_heros);  // [Output] => [ 'thor', 'Ironman', 'spiderman', [ 'superman', 'flash', 'batman' ] ]
+/* 
+   Explanation of above output.
+   => 'thor' = index no. 0
+   => 'Ironman' = index no. 1
+   => 'spiderman' = index no. 2
+   => [ 'superman', 'flash', 'batman' ] = index no. 3
+*/
+// Here output is a dc_heros array is inserted inside the marvel_heros array and return as a array inside a array, so whole dc_heros array is treated as single element .
+// This is not a correct way to mearge arrays.
+// But in some cases if we are in a situation where we have to put a array inside of a array then push() method is useful. 
+// If we want to access the flash element then the code will be.....
+// console.log(marvel_heros[3][1]);   // [Output] => flash
+// But there are another ways to access these tyoe of elements, which will explore latter. 
+
+// concat();
+ const allHeros = marvel_heros.concat(dc_heros);
+ // The concat() method of Array is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+ console.log(allHeros);    // [Output] => [ 'thor', 'Ironman', 'spiderman', 'superman', 'flash', 'batman' ]
+ /* 
+   Explanation of above output.
+   => 'thor' = index no. 0
+   => 'Ironman' = index no. 1
+   => 'spiderman' = index no. 2
+   => 'superman' = index no. 3
+   => 'flash' = index no. 3
+   => 'batman' = index no. 3
+*/
+
+//spread
+const all_new_heros = [...marvel_heros, ...dc_heros]
+//It is not a method but it is a syntax which helps to concadinate 2 arrays and we will get to see this syntax in most of the codes.
+// Syntax => (...)
+console.log(all_new_heros); // [Output] => [ 'thor', 'Ironman', 'spiderman', 'superman', 'flash', 'batman' ]
+/* 
+   Explanation of above output.
+   => 'thor' = index no. 0
+   => 'Ironman' = index no. 1
+   => 'spiderman' = index no. 2
+   => 'superman' = index no. 3
+   => 'flash' = index no. 3
+   => 'batman' = index no. 3
+*/
+
+
+// flat();
+const another_array = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]];
+// If we ever find above type of situation then we can deal with this easily by following method.
+const real_another_array = another_array.flat(Infinity);
+// The flat() method of Array creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+console.log(real_another_array); // [Output] =>  [1, 2, 3, 4, 5, 6, 7, 6, 7, 4,5]
+
+//Array.isArray();
+// The Array.isArray() static method asks whether the passed value is an Array.
+console.log(Array.isArray('Abhilash')); // [Output] => false
+
+//Array.from();
+//Create an array from a string.
+//The Array.from() method returns an array from any object with a length property.
+console.log(Array.from("Abhilash")); // [Output] => ['A', 'b', 'h','i', 'l', 'a','s', 'h']
+
+// Array.of();
+let score1 = 100
+let score2 = 200
+let score3 = 300
+console.log(Array.of(score1, score2, score3)); //  [Output] =>[ 100, 200, 300 ]
+//The Array.of() static method creates a new Array from a variable number of arguments, regardless of number or type of the arguments.
+
+
+// We have to master this array chapter by exploring more....
