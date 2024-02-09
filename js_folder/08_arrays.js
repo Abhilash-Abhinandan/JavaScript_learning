@@ -90,7 +90,7 @@ const dc_heros = ["superman", "flash", "batman"];
    => 'spiderman' = index no. 2
    => [ 'superman', 'flash', 'batman' ] = index no. 3
 */
-// Here output is a dc_heros array is inserted inside the marvel_heros array and return as a array inside a array, so whole dc_heros array is treated as single element .
+// Here output is the dc_heros array is inserted inside the marvel_heros array and return as a array inside a array, so whole dc_heros array is treated as single element .
 // This is not a correct way to mearge arrays.
 // But in some cases if we are in a situation where we have to put a array inside of a array then push() method is useful. 
 // If we want to access the flash element then the code will be.....
