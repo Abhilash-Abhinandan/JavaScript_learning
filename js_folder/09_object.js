@@ -206,11 +206,11 @@ console.log(instructor);  // [Output] => Abhilash
 
 // **************************************** JSON API Intro ****************************************
 // We will get APIs in object form.
-{
-    "name": "hitesh",
-    "coursename": "js in hindi",
-    "price": "free"
-}
+// {
+//     "name": "hitesh",
+//     "coursename": "js in hindi",
+//     "price": "free"
+// }
 // Here keys and values both are present in string format.
 // Ignore this errors for now.
 
