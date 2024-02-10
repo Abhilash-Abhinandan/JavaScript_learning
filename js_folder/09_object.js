@@ -203,3 +203,25 @@ console.log(courseInstructor);  // [Output] => Abhilash
 // If we want to change the key name to access keys whatever reason it may be then...
 const {courseInstructor: instructor} = course; // Here we changed the courseInstructor to instructor. Now we can use instructor instade of courseInstructor.
 console.log(instructor);  // [Output] => Abhilash
+
+// **************************************** JSON API Intro ****************************************
+// We will get APIs in object form.
+{
+    "name": "hitesh",
+    "coursename": "js in hindi",
+    "price": "free"
+}
+// Here keys and values both are present in string format.
+// Ignore this errors for now.
+
+// We will get APIs sometimes in array form also.
+// Syntax
+[
+    {},
+    {},
+    {}
+]
+
+ // Sample response Link => https://randomuser.me/api/
+ // For understanding the response use JSON formatter => https://jsonformatter.org/
+ // We will learn again clearly. This is a intro only.
