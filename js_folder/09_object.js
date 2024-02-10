@@ -181,3 +181,25 @@ console.log(Object.entries(tinderUser)); // [Output] => [ [ 'id', '123abc' ], [ 
 //Object.hasOwnProperty()
 //Determines whether an object has a property with the specified name.
 console.log(tinderUser.hasOwnProperty('isLoggedIn'));  // [Output] => true
+
+
+
+
+// **************************************** Object de-structure ****************************************
+const course = {
+    coursename : "JavaScript",
+    price: "999",
+    courseInstructor: "Abhilash"
+}
+// If we want to access a value
+console.log(course.courseInstructor);  // [Output] => Abhilash (This is the normal way we always use).
+// This is a good way but some time we have to access same object values multiple times, then writting same line again and again is little awkward.
+
+// A different way to access the object value
+const {courseInstructor} = course
+// After this line we don't have to write 'course.courseInstructor' again and again. We just write 'courseInstructor'.
+console.log(courseInstructor);  // [Output] => Abhilash
+
+// If we want to change the key name to access keys whatever reason it may be then...
+const {courseInstructor: instructor} = course; // Here we changed the courseInstructor to instructor. Now we can use instructor instade of courseInstructor.
+console.log(instructor);  // [Output] => Abhilash
