@@ -452,3 +452,82 @@ for (const key in map1) {
 // ************************************ for...each loop ************************************
 
 const coding = ["js", "ruby", "java", "python", "cpp"];
+
+
+// Following is the basic function syntax.
+//coding.forEach( function greet () { } )
+
+// But following is the callback function syntax.
+coding.forEach (function (val) {
+    console.log(val);
+})
+
+// We can also write it with an arrow function.
+coding.forEach( (item) => { console.log(item) } );
+/*
+    [Output] =>
+        js
+        ruby
+        java
+        python
+        cpp
+ 
+*/
+
+
+// Another way to run above program.
+function printMe( item){
+    console.log(item);
+}
+coding.forEach(printMe);
+/*
+    [Output] =>
+        js
+        ruby
+        java
+        python
+        cpp
+ 
+*/
+
+
+// Some basics...
+// We can access more parameters with forEach loop not just one parameter but also we can access index number and the total declared array...
+coding.forEach( (item, index, arr) => { console.log(item, index, arr) } );
+/*
+    [Output] =>
+       js 0 [ 'js', 'ruby', 'java', 'python', 'cpp' ]
+       ruby 1 [ 'js', 'ruby', 'java', 'python', 'cpp' ]
+       java 2 [ 'js', 'ruby', 'java', 'python', 'cpp' ]
+       python 3 [ 'js', 'ruby', 'java', 'python', 'cpp' ]
+       cpp 4 [ 'js', 'ruby', 'java', 'python', 'cpp' ]
+ 
+*/
+
+
+// This is the concept we need to remember any how.
+// We are going to use this concept whole the time because, the values are receive from database in array forma & each value is a object here.  
+const myCoding = [
+    {
+        languageName: "javascript",
+        languageFilename : "js"
+    },
+    {
+        languageName: "java",
+        languageFilename : "java"
+    },
+    {
+        languageName: "python",
+        languageFilename : "py"
+    }
+]
+myCoding.forEach((item) => {console.log(item.languageName) } );
+/*
+    [Output] =>
+       javascript
+       java
+       python
+*/
+
+
+ 
