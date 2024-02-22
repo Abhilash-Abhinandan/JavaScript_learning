@@ -166,7 +166,7 @@ for (let index = 0; index < myArray.length; index++) {
 for (let index = 1; index <= 20; index++) {
     if (index == 5){
         console.log(`We detected 5`);
-        break; // Here break stops the execution of code after if condition is true. Otherwise the execution will complete.
+        break; // Here break stops the execution of code if the condition is true. Otherwise, the execution will be complete.
 
     }
     console.log(`Value of i = ${index}`);
@@ -278,7 +278,7 @@ do {
 } while (score <= 10); 
 // [Output] => Score : 11
 // Here the answer is 11 bcz in do...while loop 1st code will execute which are present in do scope then after condition will check.
-// we will not use this loop most of the cases.
+// we will not use this loop in most of the cases.
 
 
 // ************************************ for...of loop ************************************
@@ -332,7 +332,7 @@ const map = new Map();
 map.set('IN', "India");
 map.set('USA', "United States of America");
 map.set('Fr', "France");
-map.set('IN', "India"); // This value will not insert in map, bcz Map() is known for unique value entries. There is no second entry of same value allowed here.
+map.set('IN', "India"); // This value will not insert in map, bcz Map() is known for unique value entries. There is no second entry of the same value allowed here.
 
 console.log(map);
  /*
@@ -356,7 +356,7 @@ for (const key of map) {
         [ 'Fr', 'France' ]
  
 */
-// Here we get output in a array form
+// Here we get output in an array form
 // If we want to print output separately then...
 for (const [key, value] of map) {
         console.log(`${key} => ${value}`);
@@ -505,8 +505,8 @@ coding.forEach( (item, index, arr) => { console.log(item, index, arr) } );
 */
 
 
-// This is the concept we need to remember any how.
-// We are going to use this concept whole the time because, the values are receive from database in array forma & each value is a object here.  
+// This is the concept we need to remember anyway.
+// We are going to use this concept the whole time because the values are received from the database in array forma & each value is an object here.  
 const myCoding = [
     {
         languageName: "javascript",
@@ -528,6 +528,189 @@ myCoding.forEach((item) => {console.log(item.languageName) } );
        java
        python
 */
+
+// Does forEach loop returns any value? Let's find out.......
+const coding = ["js", "ruby", "java", "python", "cpp"];
+const values = coding.forEach( (item) => {
+    return item;
+} )
+console.log(values); // [Output] => undefined
+// From above output we know that the forEach loop does not return any value.
+
+// If we really want to return a value using forEach loop only then....
+// Creating a myNums1 array.
+const myNums1 = [12, 13, 15, 67, 65, 75, 34, 23];
+const newArrayList = []; // Creating a empty array.
+myNums1.forEach ( (num) => {
+    if(num > 15){
+         return newArrayList.push(num);
+    }
+});
+console.log(newArrayList);  // [Output] => [ 67, 65, 75, 34, 23 ]
+
+
+// filter() method
+// The filter() method creates a new array filled with elements that pass a test provided by a function.
+// The filter() method does not change the original array.
+// filter() method also supports callback function.
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNum =  myNums.filter((num) => num > 4  ); // This is Implict return type (We learn it on arrow.js file).
+console.log(newNum); // [Output] => [ 5, 6, 7, 8, 9, 10 ]
+// Following is Explict return type (We learn it on arrow.js file).
+ // But we are bound here to write return keyword in the block to return the value.
+const newNum1 = myNums.filter( (num) => {
+    return num > 4 ;
+} )
+console.log(newNum1); // [Output] => [ 5, 6, 7, 8, 9, 10 ]
+
+
+// A Real example using filter()
+// Data are receive from database in following types.
+// Let's play on following data....
+const books = [
+    { title: 'Book One', genre: 'Fiction', publish: 1981, edition: 2004 },
+    { title: 'Book Two', genre: 'Non-Fiction', publish: 1992, edition: 2008 },
+    { title: 'Book Three', genre: 'History', publish: 1999, edition: 2007 },
+    { title: 'Book Four', genre: 'Non-Fiction', publish: 1989, edition: 2010 },
+    { title: 'Book Five', genre: 'Science', publish: 2009, edition: 2014 },
+    { title: 'Book Six', genre: 'Fiction', publish: 1987, edition: 2010 },
+    { title: 'Book Seven', genre: 'History', publish: 1986, edition: 1996 },
+    { title: 'Book Eight', genre: 'Science', publish: 2011, edition: 2016 },
+    { title: 'Book Nine', genre: 'Non-Fiction', publish: 1981, edition: 1989 },
+  ];
+
+// Case -1 => User request a data to show him/her all books which genre is history only .
+let newUser = books.filter((bk) =>bk.genre === 'History'  )
+console.log(newUser);
+/*
+    [Output] =>
+       [
+        {
+            title: 'Book Three',
+            genre: 'History',
+            publish: 1999,
+            edition: 2007
+          },
+          {
+            title: 'Book Seven',
+            genre: 'History',
+            publish: 1986,
+            edition: 1996
+          }
+    ]
+ 
+*/
+
+// Case - 2 => User request a data to show him/her all books which were published after the year 2000.
+// No need to declare a new variable, we can simply reride the varible 'newUser'.
+newUser = books.filter( (bk) => bk.publish > 2000 )
+console.log(newUser);
+/*
+    [Output] =>
+    [
+        {
+            title: 'Book Five',
+            genre: 'Science',
+            publish: 2009,
+            edition: 2014
+          },
+          {
+            title: 'Book Eight',
+            genre: 'Science',
+            publish: 2011,
+            edition: 2016
+          }
+    ]
+ */
+
+// Case - 3 => User request a data to show him/her all books which were published after the year 1995 and gener must be history only .
+newUser = books.filter((bk) => bk.publish > 1995 && bk.genre === 'History' );
+console.log(newUser);
+/*
+    [Output] =>
+       [
+             {
+               title: 'Book Three',
+               genre: 'History',
+               publish: 1999,
+               edition: 2007
+             }
+        ]
+ */
+// We can practice like this more....
+
+// ************************************ map() and reduce() method ************************************
+
+// map() method
+// If a user want to add 10 in every element of an array then...
+const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNumbers = myNumbers.map((num) => num + 10 );
+console.log(newNumbers);
+/*
+    [Output] =>
+       [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+ */
+
+
+// Channing of methods....
+// We can use multiple methods multiple times.
+// In this case user firstly want to multiply 10 in every elemnt of existing array then secondly want to add 1 then thirdly want to show him/her all the data that are bigger than the 40. ( We can do first and second case in one map() method but we do it separately for better understanding in channing of methods ).
+const newNums = myNumbers
+                .map((num) => num * 10 )
+                .map( (num) => num + 1)
+                .filter( (num) => num >= 40) 
+
+console.log(newNums);
+/*
+    [Output] =>
+       [41, 51,  61, 71, 81, 91, 101]
+ */
+
+
+// reduce() method
+// Without arrow function
+const myNums2 = [1, 2, 3]
+const myTotal = myNums2.reduce(function (acc, currval) {
+    console.log(`acc: ${acc} and currval: ${currval}`);
+    return acc + currval
+}, 0)
+console.log(myTotal);
+/*
+    [Output] =>
+       acc: 0 and currval: 1
+       acc: 1 and currval: 2
+       acc: 3 and currval: 3
+       6
+ */
+
+
+// With arrow function
+const myTotal1 = myNums2.reduce((acc, curr) => acc + curr, 0 );
+console.log(myTotal1); // [Output] => 6
+
+
+
+const shoppingCart = [
+    {
+        itemName: "js course",
+        price: 2999
+    },
+    {
+        itemName: "py course",
+        price: 999
+    },
+    {
+        itemName: "mobile dev course",
+        price: 5999
+    },
+    {
+        itemName: "data science course",
+        price: 12999
+    },
+]
+
+const priceToPay = shoppingCart.reduce((acc, itemPrice) => acc + itemPrice.price, 0 );
+console.log(priceToPay);  // [Output] => 22996
 
 
  
