@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docment Object Model</title>
+    <style>
+        body{
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 id="title" class="heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ratione.</h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <input type="password" name="Submit" id="">
+        <marquee behavior="" direction=""  ></marquee>
+        <!-- <li class = "list_item" >Abhilash</li>
+        <li class = "list_item" >Abhinanadan</li>
+        <li class = "list_item" >Twinkle</li>
+        <li class = "list_item" >Muni</li> -->
+    </div>
+
+    <!-- getElementById('title' ) -->
+<!-- getElementById('title' ).className -->
+<!-- document.getElementById('title').getAttribute('class') -->
+<!-- document.getElementById('title').setAttribute('class', 'alter-class') -->
+
+
+<!-- const title = document.getElementById('title' )
+title.style.backgroundColor = 'green' -->
+
+
+<!-- What is the Difference Between textContents, innerText, and innerHtml?
+textContents => is all text contained by an element and all its children that are for formatting purposes only.
+innerText => returns all text contained by an element and all its child elements.
+innerHtml => returns all text, including html tags, that is contained by an element. -->
+
+
+<!-- document.querySelector('h2') -->
+<!-- document.querySelector('#title') -->
+<!-- document.querySelector('.heading') -->
+<!-- document.querySelector('input[type="password"]') -->
+
+
+<!-- document.querySelectorAll('li')
+Here the output will be a nodeList which is not a Array, but it looks like an array and many properties are same with an array.  -->
+<!-- const list = document.querySelectorAll('li') -->
+<!-- list[1].style.backgroundColor = 'green' -->
+<!-- list.forEach(function (l) {
+    l.style.backgroundColor='green'
+}) -->
+
+<!-- Self practice on WikiPedia page
+[Changing all h2 text into red color]
+document.querySelectorAll('h2')
+const H2 = document.querySelectorAll('h2')
+H2.forEach(function (hh) {
+    hh.style.color = 'red'
+}) -->
+<!-- [Changing all h2 text into red color and background into black and add some padding]
+H2.forEach(function (hh) {
+    hh.style.color = 'red';
+    hh.style.backgroundColor = 'Black';
+    hh.style.padding = '10px';
+}) -->
+
+
+<div class="parent">
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednessday</div>
+    <div class="day">Thrusday</div>
+</div>
+<script>
+    const prt = document.querySelector('.parent');
+    // console.log(prt);
+    // console.log(prt.children);
+    // console.log(prt.children[2].innerText);
+    
+    // for (let index = 0; index <= prt.children.length; index++) {
+    //     console.log(prt.children[index].innerHTML);
+        
+    // }
+
+    prt.children[1].style.color = "orange";
+    console.log(prt.firstElementChild);
+    console.log(prt.lastElementChild);
+
+    const dayOne = document.querySelector('.day');
+    console.log(dayOne);
+    console.log(dayOne.parentElement); // Here we get parent from the children.
+    console.log(dayOne.nextElementSibling);
+
+    console.log("NODES :", prt.childNodes);
+
+
+    // Creating a new element in DOM
+    const div = document.createElement('div');
+    console.log(div);
+    // A way to add property
+    div.className = "main";
+    div.id = Math.round(Math.random() * 100 + 1);
+    div.setAttribute("title", "Division") // Another way to add property
+    // Adding style
+    div.style.backgroundColor = "green";
+    div.style.padding = "12px";
+    // A way to add text
+    div.innerText = "Abhilash"
+    // Another way to add text
+    const txt = document.createTextNode("Abhinandan");
+    div.appendChild(txt);
+
+    // Attaching everything on the document
+    document.body.appendChild(div);
+
+</script>
+
+
+<div>
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</div>
+<script>
+    // Basic approach to create an element and add it to the document 
+    function addLanguage (langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+
+    }
+    addLanguage("python");
+    addLanguage("TypeScript");
+    // Another approach to create an element and add it to the document
+    function addOptLanguage (langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptLanguage("Rust");
+
+    // Edit an element [example - 1]
+    const secondLang = document.querySelector('li:nth-child(2)');
+    // secondLang.innerHTML = "Ruby"
+    const newLi = document.createElement('li');   
+    newLi.textContent = "Ruby";
+    secondLang.replaceWith(newLi);
+
+    // Edit an element [example - 2]
+    const firstLang = document.querySelector('li:nth-child(1)');
+    firstLang.outerHTML = '<li>C++</li>'
+    // We can use any approach as our wish
+
+
+    // Removing last element
+    const lastLang0 = document.querySelector('li:last-child');
+    lastLang0.remove()
+</script>
+    
+</body>
+</html>
+
