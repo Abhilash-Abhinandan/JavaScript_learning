@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+ </head>
+ <body>
+    <h1>JS_learning</h1>
+    <button id="stop">Stop</button>
+    <hr>
+    <h2>2nd exercise</h2>
+    <button id="start">Start</button>
+    <button id="stop1">Stop</button>
+ </body>
+
+ <script>
+    // Use of setTimeout()
+    // Example - 1
+    const sayHi = function(){
+        console.log("Abhilash");
+    }
+    setTimeout(sayHi, 2000);
+
+    // Example - 2
+    const autoChange = function(){
+        document.querySelector('h1').innerHTML = "The is the site of Abhilash"
+    };
+    const clearExecution = setTimeout(autoChange, 2000);
+    // In case if we want to stop the above execution by clicking on the stop button
+    // First we need to hold the setTimeout() in a variable.
+    document.querySelector('#stop'). addEventListener('click', function(){
+        clearTimeout(clearExecution);
+        // Printing a message in console of browser to confirm the execution.
+        console.log("Exercution Stopped");
+    });
+
+    // setInterval()  ,  clearInterval()     
+    // script for 2nd exercise 
+    // If we click start button then the date printing will be started and if we click the stop button then the date printing will be stopped.
+    let interval;
+    const startPrint = function(){
+
+        function datePrint(){
+            console.log('Date :', Date.now());
+        }
+        if(!interval){
+            interval = setInterval(datePrint, 1000);
+        }
+    };
+    const stopPrint = function(){
+        clearInterval(interval);
+        interval = null;
+    };
+    document.querySelector('#start').addEventListener('click', startPrint);
+    document.querySelector('#stop1').addEventListener('click', stopPrint);
+ </script>
+ </html>
