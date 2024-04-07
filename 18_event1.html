@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+    // Need to study..................
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // Basic approach
+    // document.getElementById('owl').onclick = function(){
+    //     alert("Owl Clicked");
+    // };
+
+    // Best approach
+    // document.getElementById('owl').addEventListener('click', function(evt){
+    //     alert("Owl clicked again");
+    // }, false);
+
+    
+
+    // Event bubbling
+    /* 
+    In event bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements.
+    */
+    // document.getElementById('images').addEventListener('click', function(evt){
+    //     console.log('Clicked Inside the ul');
+    // }, false);
+
+    // document.getElementById('owl').addEventListener('click', function(evt){
+    //     console.log('Owl clicked');
+    // }, false);
+    /* [Output] =>
+            Owl clicked
+            Clicked Inside the ul
+    */
+
+   // Event capturing
+    /* 
+    In event capturing, the event is first captured and handled by the outer element and then propagated to inner elements.
+    */
+    // document.getElementById('images').addEventListener('click', function(evt){
+    //     console.log('Clicked Inside the ul');
+    // }, true);
+
+    // document.getElementById('owl').addEventListener('click', function(evt){
+    //     console.log('Owl clicked');
+    // }, true);
+    /* [Output] =>
+            Clicked Inside the ul
+            Owl clicked
+    */
+   // It is totly depends on usecase when we have to use Event bubbling and when to use Event capturing.
+
+   // if we don't want the bubbling then...
+//    document.getElementById('images').addEventListener('click', function(evt){
+//         console.log('Clicked Inside the ul');
+//     }, false);
+
+//     document.getElementById('owl').addEventListener('click', function(evt){
+//         console.log('Owl clicked');
+//         evt.stopPropagation(); // This line will stop the event bubbling.
+//     }, false);
+    /* [Output] =>
+            Owl clicked
+    */
+
+
+    // if we want to stop a link to redirect then
+    // document.getElementById('google').addEventListener('click', function(evt){
+    //     evt.preventDefault();
+    //     evt.stopPropagation(); // stopping event bubbling
+    //     console.log('Google clicked');
+    // });
+
+
+    
+
+    // learning through a very mini project.
+    // Project => A image will vanish when I chick on a image.
+    document.querySelector('#images').addEventListener('click', function(evt){
+        console.log(evt.target.tagName);
+        if (evt.target.tagName === 'IMG'){
+            let removeIt = evt.target.parentNode;
+            removeIt.remove(); // it is a simple method for remove
+        }
+        // removeIt.parentNode.removeChild(removeIt); // It is a little bit confusing method for remove operation. But we can use it if we like.
+
+    })
+
+
+</script>
+</html>
