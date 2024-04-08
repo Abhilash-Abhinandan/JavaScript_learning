@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // How apirequest occures before the fetch() was introduced [Old method]
+    const requestUrl = 'https://randomuser.me/api/'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    // Only these lines can not able to send a request
+
+    // If we want to track our request then...
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        // Detecting state
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText); // Coverting string response to JSON
+            console.log(typeof data); // [Output] => Object
+            console.log(data.info.version); // Accessing the object properties.
+        }
+    };
+    xhr.send(); // Now we send a request.
+
+</script>
+</html>
+
+// Explore more and more if you want.
